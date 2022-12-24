@@ -1,0 +1,206 @@
+/* universal selector */
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* sets margin for everything in the body */
+body {
+    margin: 0;
+}
+
+/* sets header styles, and flex */
+header {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(155, 92, 155);
+    border: 0;
+    margin: 0;
+}
+
+/* Sets flex display to main section */
+main {
+    display: flex;
+    justify-content: center;
+}
+
+/* sets default styles for quiz-box */
+#quiz-box {
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    height: 300px;
+    margin: 50px;
+    padding: 10px;
+    border: 3px solid black;
+}
+
+/* quiz box header styles */
+#box-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#high-scores-button {
+    margin-left: 25px;
+    cursor: pointer;
+    color: rgb(155, 92, 155);
+    font-weight: bold;
+}
+
+#high-scores-button:hover {
+    color: rgb(206, 123, 206);
+}
+
+#timer {
+    margin-right: 25px;
+    font-weight: bold;
+}
+
+/* Styles for start quiz id elements */
+#start-quiz-screen {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#start-quiz-screen p {
+    font-size: 20px;
+    margin-top: 1px;
+    margin-bottom: 25px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    height: 100px;
+    margin: 10px;
+}
+
+/* Sets these styles for all buttons under this class */
+.button {
+    background-color: rgb(155, 92, 155);
+    font-weight: bold;
+    font-size: 25px;
+    padding: 5px 10px;
+    height: 50%;
+    cursor: pointer;
+    border: 3px solid black;
+    border-radius: 7px;
+    margin: 5px;
+}
+
+/* Gives a hover effect when hovering any of the buttons */
+.button:hover {
+    background-color: rgb(206, 123, 206);
+}
+
+/* sets styles, and flex for all divs in this class */
+.question-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.question-screen p {
+    font-size: 25px;
+}
+
+#complete-screen p {
+    margin: 1px;
+}
+
+form {
+    margin-top: 20px;
+    height: 100px;
+}
+
+form label {
+    font-size: 30px;
+}
+
+form input {
+    text-align: center;
+    width: 30%;
+    height: 30%;
+    font-size: 30px;
+}
+
+#button-container-score-screen {
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#score-screen p {
+    width: 200px;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: gray;
+}
+
+/* Display functions */
+
+#start-quiz-screen {
+    display: "";
+}
+
+#question-1 {
+    display: none;
+}
+
+#question-2 {
+    display: none;
+}
+
+#question-3 {
+    display: none;
+}
+
+#question-4 {
+    display: none;
+}
+
+#question-5 {
+    display: none;
+}
+
+#complete-screen {
+    display: none;
+}
+
+#score-screen {
+    display: none;
+}
+
+@media screen and (max-width: 673px) {
+    #quiz-box {
+        height: 500px;
+    }
+    .button {
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 383px) {
+    #quiz-box {
+        height: 700px;
+    }
+    
+}
+
+
+
+
+
+
+
+
+

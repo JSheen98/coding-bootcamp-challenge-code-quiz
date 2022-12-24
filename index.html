@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Code Quiz</title>
+        <link rel="stylesheet" href="./assets/css/style.css">
+    </head>
+    <body>
+        <header>
+            <h1>Code Quiz</h1>
+        </header>
+        <main>
+            <section id="quiz-box">
+                
+                <div id="box-header" data-state="visible">
+                    <p id="high-scores-button">View High Scores</h2>
+                    <p id="timer">Time: 00</h2>
+                </div>
+                
+                <!-- First screen user should see, once button is clicked, this screen hides -->
+                <div id="start-quiz-screen">
+                    <h2>Coding Quiz Challenge</h2>
+                    <p>Please answer the following questions before the timer expires. Answering incorrectly will
+                        take 10 seconds off the clock! Answering correctly will reward 10 points.
+                    </p>
+                    <button id="start-quiz-button" class="button">Start Quiz</button>
+                </div>
+
+                <div id="question-1" class="question-screen">
+                    <p>Commonly used data types do NOT include:</p>
+                    <div class="button-container">
+                        <button class="incorrect button question-1-button">A. strings</button>
+                        <button class="incorrect button question-1-button">B. booleans</button>
+                        <button class="correct button question-1-button">C. alerts</button>
+                        <button class="incorrect button question-1-button">D. numbers</button>
+                    </div>
+                </div>
+                
+                <div id="question-2" class="question-screen">
+                    <p>The condition in an if / else statement is enclosed with _______.</p>
+                    <div class="button-container">
+                        <button class="incorrect button question-2-button">A. quotes</button>
+                        <button class="correct button question-2-button">B. parentheses</button>
+                        <button class="incorrect button question-2-button">C. curly brackets</button>
+                        <button class="incorrect button question-2-button">D. square</button>
+                    </div>
+                </div>
+                
+                <div id="question-3" class="question-screen">
+                    <p>Arrays in JavaScript can be used to store _______.</p>
+                    <div class="button-container">
+                        <button class="incorrect button question-3-button">A. numbers and strings</button>
+                        <button class="incorrect button question-3-button">B. other arrays</button>
+                        <button class="incorrect button question-3-button">C. booleans</button>
+                        <button class="correct button question-3-button">D. all of the above</button>
+                    </div>
+                </div>
+                
+                <div id="question-4" class="question-screen">
+                    <p>String values must be enclosed within _______ when being assigned to variables.</p>
+                    <div class="button-container">
+                        <button class="incorrect button question-4-button">A. commas</button>
+                        <button class="incorrect button question-4-button">B. curly brackets</button>
+                        <button class="correct button question-4-button">C. quotes</button>
+                        <button class="incorrect button question-4-button">D. parentheses</button>
+                    </div>
+                </div>
+                
+                <div id="question-5" class="question-screen">
+                    <p>A useful debugging tool used to print content to the debugger is:</p>
+                    <div class="button-container">
+                        <button class="correct button question-5-button">A. console.log</button>
+                        <button class="incorrect button question-5-button">B. JavaScript</button>
+                        <button class="incorrect button question-5-button">C. terminal/bash</button>
+                        <button class="incorrect button question-5-button">D. for loops</button>
+                    </div>
+                </div>
+
+                <div id="complete-screen" class="question-screen">
+                    <h2>Quiz complete!</h2>
+                    <p>Your final score is: <span class="final-score">00</span></p2>
+                    <form>
+                        <label for="initials">Enter your initials: </label>
+                        <input type="initials" name="initials" id="initials"/>
+                        <button type="submit" class="button" id="complete-button">Submit</button>
+                    </form>
+                </div>
+
+                <div id="score-screen" class="question-screen">
+                    <h2>High Scores</h2>
+                    <p id="scores">Test</p>
+                    <div id="button-container-score-screen">
+                        <button id="restart" class="button">Go Back</button>
+                        <button id="clear-score" class="button">Clear high scores</button>
+                    </div>
+                </div>
+
+                <!-- Should display correct or incorrect depending on user answer. Defaults to hidden -->
+                <div id="box-footer">
+                    <p id="is-correct"></p>
+                </div>
+
+            </section>
+        </main>
+    </body>
+    <script src="script.js"></script>
+</html>
