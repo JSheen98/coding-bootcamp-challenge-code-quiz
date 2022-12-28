@@ -180,6 +180,23 @@ form input {
     display: none;
 }
 
+#box-footer {
+    display: flex;
+    justify-content: center;
+}
+
+#is-correct-caption {
+    font-weight: bold;
+    color: green;
+    display: none;
+}
+
+#is-incorrect-caption {
+    font-weight: bold;
+    color: red;
+    display: none;
+}
+
 @media screen and (max-width: 673px) {
     #quiz-box {
         height: 500px;
