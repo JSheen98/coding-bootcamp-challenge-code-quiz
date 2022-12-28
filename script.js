@@ -14,6 +14,7 @@ var question4Button = document.querySelectorAll(".question-4-button")
 var question5Button = document.querySelectorAll(".question-5-button")
 var completeButton = document.querySelector("#complete-button")
 var goBackButton = document.querySelector("#restart")
+var highScoresButton = document.querySelector("#high-scores-button")
 var isCorrectCaption = document.querySelector("#is-correct-caption")
 var gameOver = document.querySelector("#game-over")
 var isIncorrectCaption = document.querySelector("#is-incorrect-caption")
@@ -51,10 +52,9 @@ function startTime() {
 function runQuiz() {
     startQuiz.addEventListener("click", function () {
         //calls the timer function to start when user clicks 'start quiz'
-        startTime() 
-        if (startQuizScreen.style.display == "") {
-        }
+        startTime()
         startQuizScreen.style.display = "none"
+        highScoresButton.style.display = "none"
 
         if (question1.style.display == "") {
             displayValue = "flex"
@@ -62,11 +62,11 @@ function runQuiz() {
         question1.style.display = displayValue
     })
 
-    for (let i = 0; i < question1Button.length; i++) {
+    // For loop for each question that allows the user to press any of the buttons to get to the next screen
+    for (let i = 0; i < question1Button.length; i++) {       
         question1Button[i].addEventListener("click", function (event) {
-            if (question1.style.display == "flex") {
-            }
             question1.style.display = "none"
+            highScoresButton.style.display = "none"
             let userChoice = event.target.dataset.answer;
 
             if (userChoice === "correct") {
@@ -85,9 +85,8 @@ function runQuiz() {
         })
 
         question2Button[i].addEventListener("click", function (event) {
-            if (question2.style.display == "flex") {
-            }
             question2.style.display = "none"
+            highScoresButton.style.display = "none"
             let userChoice = event.target.dataset.answer;
 
             if (userChoice === "correct") {
@@ -106,9 +105,8 @@ function runQuiz() {
         })
 
         question3Button[i].addEventListener("click", function (event) {
-            if (question3.style.display == "flex") {
-            }
             question3.style.display = "none"
+            highScoresButton.style.display = "none"
             let userChoice = event.target.dataset.answer;
 
             if (userChoice === "correct") {
@@ -127,9 +125,8 @@ function runQuiz() {
         })
 
         question4Button[i].addEventListener("click", function (event) {
-            if (question4.style.display == "flex") {
-            }
             question4.style.display = "none"
+            highScoresButton.style.display = "none"
             let userChoice = event.target.dataset.answer;
 
             if (userChoice === "correct") {
@@ -151,6 +148,7 @@ function runQuiz() {
             if (question5.style.display == "flex") {
             }
             question5.style.display = "none"
+            highScoresButton.style.display = "block"
             let userChoice = event.target.dataset.answer;
 
             if (userChoice === "correct") {
@@ -175,9 +173,8 @@ function runQuiz() {
         event.preventDefault()
         isCorrectCaption.style.display = "none"
         isIncorrectCaption.style.display = "none"
+        highScoresButton.style.display = "none"
 
-        if (completeScreen.style.display == "flex") {
-        }
         completeScreen.style.display = "none"
 
         if (scoreScreen.style.display == "") {
@@ -190,17 +187,31 @@ function runQuiz() {
     })
 
     goBackButton.addEventListener("click", function () {
-        if (scoreScreen.style.display == "flex") {
-        }
         scoreScreen.style.display = "none"
+        highScoresButton.style.display = "block"
 
         if (startQuizScreen.style.display == "none") {
             displayValue = "flex"
         }
         startQuizScreen.style.display = displayValue
     })
-}
 
+    highScoresButton.addEventListener("click", function() {
+        timer = 1
+        startQuizScreen.style.display = "none"
+        question1.style.display = "none"
+        question2.style.display = "none"
+        question3.style.display = "none"
+        question4.style.display = "none"
+        question5.style.display = "none"
+        completeScreen.style.display = "none"
+        scoreScreen.style.display = "flex"
+        completeScreen.style.display = "none"
+        gameOver.style.display = "none"
+        highScoresButton.style.display = "none"
+        score = 0
+    })
+}
 
 // function to display the word 'correct' or 'incorrect' given the user's answer
 function displayAnswer(isCorrect) {
