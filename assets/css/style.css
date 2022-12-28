@@ -43,6 +43,7 @@ main {
 }
 
 #high-scores-button {
+    display: block;
     margin-left: 25px;
     cursor: pointer;
     color: rgb(155, 92, 155);
