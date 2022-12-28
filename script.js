@@ -15,6 +15,7 @@ var question5Button = document.querySelectorAll(".question-5-button")
 var completeButton = document.querySelector("#complete-button")
 var goBackButton = document.querySelector("#restart")
 var isCorrectCaption = document.querySelector("#is-correct-caption")
+var gameOver = document.querySelector("#game-over")
 var isIncorrectCaption = document.querySelector("#is-incorrect-caption")
 var timerEl = document.querySelector("#timer")
 var scoreEl = document.querySelector("#final-score")
@@ -27,20 +28,30 @@ function startTime() {
     timer = 60;
     let interval = setInterval(() => {
         timer--;
-       if (timer === 0) {
-        clearInterval(interval)
-       }
+        if (timer === 0) {
+            clearInterval(interval)
+            // displays time up caption, hides isCorrect and isIncorrect if shown
+            gameOver.style.display = "block"
+            isCorrectCaption.style.display = "none"
+            isIncorrectCaption.style.display = "none"
+            // sends user to expected complete screen, and displays other screens as none
+            completeScreen.style.display = "flex"
+            question1.style.display = "none"
+            question2.style.display = "none"
+            question3.style.display = "none"
+            question4.style.display = "none"
+            question5.style.display = "none"
+        }
 
-       
-       timerEl.innerHTML = `Time: ${timer}` 
+        timerEl.innerHTML = `Time: ${timer}`
     }, 1000);
-    
 }
 
 // main function for quiz navigation
 function runQuiz() {
     startQuiz.addEventListener("click", function () {
-        startTime() //calls the timer function to start when user clicks 'start quiz'
+        //calls the timer function to start when user clicks 'start quiz'
+        startTime() 
         if (startQuizScreen.style.display == "") {
         }
         startQuizScreen.style.display = "none"
@@ -51,12 +62,13 @@ function runQuiz() {
         question1.style.display = displayValue
     })
 
-    for(let i = 0; i < question1Button.length; i++) {
+    for (let i = 0; i < question1Button.length; i++) {
         question1Button[i].addEventListener("click", function (event) {
             if (question1.style.display == "flex") {
             }
             question1.style.display = "none"
             let userChoice = event.target.dataset.answer;
+
             if (userChoice === "correct") {
                 displayAnswer(true)
                 givePoints(true)
@@ -65,7 +77,7 @@ function runQuiz() {
                 displayAnswer(false)
                 subtractTime(true)
             }
-    
+
             if (question2.style.display == "") {
                 displayValue = "flex"
             }
@@ -77,6 +89,7 @@ function runQuiz() {
             }
             question2.style.display = "none"
             let userChoice = event.target.dataset.answer;
+
             if (userChoice === "correct") {
                 displayAnswer(true)
                 givePoints(true)
@@ -85,7 +98,7 @@ function runQuiz() {
                 displayAnswer(false)
                 subtractTime(true)
             }
-    
+
             if (question3.style.display == "") {
                 displayValue = "flex"
             }
@@ -97,6 +110,7 @@ function runQuiz() {
             }
             question3.style.display = "none"
             let userChoice = event.target.dataset.answer;
+
             if (userChoice === "correct") {
                 displayAnswer(true)
                 givePoints(true)
@@ -105,7 +119,7 @@ function runQuiz() {
                 displayAnswer(false)
                 subtractTime(true)
             }
-    
+
             if (question4.style.display == "") {
                 displayValue = "flex"
             }
@@ -117,6 +131,7 @@ function runQuiz() {
             }
             question4.style.display = "none"
             let userChoice = event.target.dataset.answer;
+
             if (userChoice === "correct") {
                 displayAnswer(true)
                 givePoints(true)
@@ -125,7 +140,7 @@ function runQuiz() {
                 displayAnswer(false)
                 subtractTime(true)
             }
-    
+
             if (question5.style.display == "") {
                 displayValue = "flex"
             }
@@ -137,6 +152,7 @@ function runQuiz() {
             }
             question5.style.display = "none"
             let userChoice = event.target.dataset.answer;
+
             if (userChoice === "correct") {
                 displayAnswer(true)
                 givePoints(true)
@@ -145,7 +161,7 @@ function runQuiz() {
                 displayAnswer(false)
                 subtractTime(true)
             }
-    
+
             if (completeScreen.style.display == "") {
                 displayValue = "flex"
             }
@@ -153,7 +169,7 @@ function runQuiz() {
             timer = 1;
         })
 
-}
+    }
 
     completeButton.addEventListener("click", function (event) {
         event.preventDefault()
@@ -170,7 +186,7 @@ function runQuiz() {
         scoreScreen.style.display = displayValue
         timer = 0;
         score = 0;
-        
+        gameOver.style.display = "none"
     })
 
     goBackButton.addEventListener("click", function () {
