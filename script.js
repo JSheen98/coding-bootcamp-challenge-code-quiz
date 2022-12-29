@@ -12,16 +12,23 @@ var question2Button = document.querySelectorAll(".question-2-button")
 var question3Button = document.querySelectorAll(".question-3-button")
 var question4Button = document.querySelectorAll(".question-4-button")
 var question5Button = document.querySelectorAll(".question-5-button")
-var completeButton = document.querySelector("#complete-button")
+var submitButton = document.querySelector("#submit-button")
 var goBackButton = document.querySelector("#restart")
+var clearScoresButton = document.querySelector("#clear-score")
 var highScoresButton = document.querySelector("#high-scores-button")
 var isCorrectCaption = document.querySelector("#is-correct-caption")
 var gameOver = document.querySelector("#game-over")
 var isIncorrectCaption = document.querySelector("#is-incorrect-caption")
 var timerEl = document.querySelector("#timer")
 var scoreEl = document.querySelector("#final-score")
+var leaderboardEl = document.querySelector("#scores")
 var score = 00;
 var timer;
+var initialsInput = document.querySelector("#initials")
+var user = {
+    initialsInput: initialsInput.value,
+    score: score.valueOf
+}
 isCorrect = true;
 
 // function that starts the timer, and clears the timer at 0 seconds
@@ -169,13 +176,17 @@ function runQuiz() {
 
     }
 
-    completeButton.addEventListener("click", function (event) {
+    // Submits the user's initials, and saves them in local storage, as well as the score
+    submitButton.addEventListener("click", function (event) {
         event.preventDefault()
         isCorrectCaption.style.display = "none"
         isIncorrectCaption.style.display = "none"
         highScoresButton.style.display = "none"
-
         completeScreen.style.display = "none"
+
+        localStorage.setItem("initialsInput", initialsInput)
+        localStorage.setItem("score", score)
+        leaderboardEl.innerHTML = `1. ${initialsInput.value} - ${score}`
 
         if (scoreScreen.style.display == "") {
             displayValue = "flex"
@@ -186,6 +197,7 @@ function runQuiz() {
         gameOver.style.display = "none"
     })
 
+    // Takes user back to the start quiz screen
     goBackButton.addEventListener("click", function () {
         scoreScreen.style.display = "none"
         highScoresButton.style.display = "block"
@@ -196,6 +208,13 @@ function runQuiz() {
         startQuizScreen.style.display = displayValue
     })
 
+    // Clears the local storage, and removes any saved text from the score box
+    clearScoresButton.addEventListener("click", function() {
+        localStorage.clear()
+        leaderboardEl.innerHTML = `N/A`
+    })
+
+    // Makes this button display the High Score screen as "flex", display all other screens as "none", and resets timer and score  
     highScoresButton.addEventListener("click", function() {
         timer = 1
         startQuizScreen.style.display = "none"
@@ -206,7 +225,6 @@ function runQuiz() {
         question5.style.display = "none"
         completeScreen.style.display = "none"
         scoreScreen.style.display = "flex"
-        completeScreen.style.display = "none"
         gameOver.style.display = "none"
         highScoresButton.style.display = "none"
         score = 0
